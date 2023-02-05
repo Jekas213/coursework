@@ -15,9 +15,9 @@ public class Main {
         printInfoEmployee(employees); // печать полной информации о всех сотрудниках (8.a)
         double allSalary = getAllSalary(employees); // зарплата всех сотрудников (8.b)
         System.out.println("Сумма всех зарплат " + allSalary);
-        System.out.println("Сотрудник с минимальной зарплатой - "+getEmployeeMinSalary(employees)); // Сотрудник с минимальной зарплатой (8.c)
+        System.out.println("Сотрудник с минимальной зарплатой - " + getEmployeeMinSalary(employees)); // Сотрудник с минимальной зарплатой (8.c)
         System.out.println("Сотрудник с максимальной зарплатой - " + getEmployeeMaxSalary(employees)); // Сотдрудник с максимальной зарплатой (8.d)
-        double averageSalary = allSalary/employees.length; // средняя зарплата (8.e)
+        double averageSalary = getAverageSalary(employees,allSalary); // средняя зарплата (8.e)
         System.out.println("Средняя зарплата " + averageSalary);
         printFullNameEmployee(employees); // печать ФИО всех сотрудников (8.f)
 
@@ -45,30 +45,35 @@ public class Main {
     }
 
     public static Employee getEmployeeMinSalary(Employee[] arr) {
-        int min = Integer.MAX_VALUE;
-        int x = 0;
+        int min = arr[0].getSalary();
+        int index = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].getSalary() < min) {
                 min = arr[i].getSalary();
             }
             if (min == arr[i].getSalary()) {
-                x = i;
+                index = i;
             }
         }
-        return arr[x];
+        return arr[index];
     }
 
     public static Employee getEmployeeMaxSalary(Employee[] arr) {
-        int max = Integer.MIN_VALUE;
-        int x = 0;
+        int max = arr[0].getSalary();
+        int index = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].getSalary() > max) {
                 max = arr[i].getSalary();
             }
             if (max == arr[i].getSalary()) {
-                x = i;
+                index = i;
             }
         }
-        return arr[x];
+        return arr[index];
+    }
+
+    public static double getAverageSalary(Employee[] arr, double allSalary) {
+        double average = allSalary / arr.length;
+        return average;
     }
 }
