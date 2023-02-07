@@ -29,13 +29,13 @@ public class EmployeeBook {
     }
 
     public Employee findeEmployee(String fullName) {
-        int index = 0;
-        for (int i = 0; i < size; i++) {
+        int i;
+        for (i = 0; i < size; i++) {
             if (employees[i].getFullName().equals(fullName)) {
-                index = i;
+                return employees[i];
             }
         }
-        return employees[index];
+        return employees[i];
     }
 
     public Employee changeEmployeeSalary(Employee findeEmployee, int newSalary) {
